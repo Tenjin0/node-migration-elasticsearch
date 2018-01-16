@@ -115,17 +115,17 @@ function doAction(command) {
                 break;
             case 'preprod':
                 opts.host = 'preprod01';
-                opts.user = 'v3';
-                opts.password = 'V3/1215%';
-                req.db.elasticsearch.recipient_cluster = "10.130.1.130:9200"
-                req.db.elasticsearch.event_cluster = "10.130.1.130:9200"
+                opts.user = process.env.mysqlpreproduser
+                opts.password = process.env.mysqlpreprodpass
+                req.db.elasticsearch.recipient_cluster = process.env.espreprodhost
+                req.db.elasticsearch.event_cluster = process.env.espreprodhost
                 break;
             case 'prod':
-                opts.host = 'mysql-sbg-01.paris08-nm.com';
-                opts.user = 'v3';
-                opts.password = '6!7jh%9';
-                req.db.elasticsearch.recipient_cluster = 'web-rbx-01.paris08-nm.com:9200'
-                req.db.elasticsearch.event_cluster = 'web-rbx-01.paris08-nm.com:9201'
+                opts.host = process.env.mysqlprodhost;
+                opts.user = process.env.mysqlproduser;
+                opts.password = process.env.mysqlprodpass;
+                req.db.elasticsearch.recipient_cluster = process.env.esrecipientprodhost
+                req.db.elasticsearch.event_cluster = process.env.eseventprodhost
                 break;
             default:
                 break;
